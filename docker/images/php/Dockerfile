@@ -1,11 +1,11 @@
-FROM php:8.5-fpm
+FROM php:8.4-fpm
 
 ARG HOST_UID
 ARG HOST_GID
 ARG USERNAME=www-data
 
 RUN apt -y update && \
-    docker-php-ext-install pdo pdo_mysql && \
+    docker-php-ext-install pdo pdo_mysql calendar && \
     apt install -y locales && \
     sed -Ei 's/# ((hu_HU|en_US|zh_CN).UTF-8 )/\1/' /etc/locale.gen && \
     locale-gen && \
